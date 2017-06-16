@@ -68,12 +68,16 @@ if ($_SESSION['name']) {
                                     <select id="exampleSelect" class="form-control" name="catagory">
 
                                         <?php
+										$category = '';
                                         $select = $con->query("SELECT * FROM job_catagory WHERE status='Active'");
                                         if ($select) {
                                             foreach ($select as $s) {
                                                 ?>
 
                                                 <option><?php echo $s['catagory'];  ?></option>
+												
+												if($s['catagory']=='Data Entry')
+													$catagory = $s['catagory'];
                                             <?php }
                                         } ?>
                                     </select>
@@ -81,7 +85,7 @@ if ($_SESSION['name']) {
                             </div>
                         </div>
 
-                        <?php   if ( 0 ) {  ?>
+                        <?php   if ( $catagory == 'Data Entry' ) {  ?>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <section class="box-typical box-typical-padding">
