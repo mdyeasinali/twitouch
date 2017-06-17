@@ -9,7 +9,7 @@ if ($query) {
             <td><?php echo $take['catagory']; ?></td>
             <td><?php echo "$" . $take['payment']; ?></td>
             <td><?php echo $take['status']; ?></td>
-            <td><a href="#" class="btn btn-inline">Edit</a></td>
+            <td><a href="job_catagory.php?cat_id=<?php echo $cat_id; ?>" class="btn btn-inline">Edit</a></td>
             <td>
                 <div class="btn-group">
                     <button type="button" class="btn btn-inline dropdown-toggle" data-toggle="dropdown"

@@ -4,6 +4,8 @@ require_once ('db.php"');
 if($_SESSION['name'])
 {
 	$user = $_SESSION['name'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +48,7 @@ if($_SESSION['name'])
 				<div class="tbl">
 					<div class="tbl-row">
 						<div class="tbl-cell">
-							<h3>Catagory Details</h3>
+							<h3>Catagory Details </h3>
 							
 						</div>
 					</div>
@@ -55,28 +57,62 @@ if($_SESSION['name'])
 			<form method="POST">
 				<?php include "injection/add_catagory.php";?>
 			<section class="card card-blue-fill">
-					<header class="card-header">
-						Add New Catagory
-					</header>
-					<div class="card-block">
-						<div class="row">
-							<div class="col-lg-4">
-								<fieldset class="form-group">
-									<label class="form-label semibold" for="exampleInput">Catagory Name</label>
-									<input type="text" name="catagory"  class="form-control" id="exampleInput" placeholder="">
-								</fieldset>
-							</div>
-							<div class="col-lg-4">
-								<fieldset class="form-group">
-									<label class="form-label semibold" for="exampleInput">Payment</label>
-									<input type="number" step="any" name="payment"  class="form-control" id="exampleInput" placeholder="">
-								</fieldset>
-							</div>
-						</div>
-						<div class="row">
-							<input type="submit" name="submit" class="btn btn-rounded btn-inline" value="Submit" style="margin-left:10px"/>
-						</div>
-					</div>
+              <?php
+                if(isset($_REQUEST['cat_id'])) {
+                    $cat_id = $_REQUEST['cat_id'];
+                    $catinfo = $con->query("SELECT * FROM job_catagory WHERE catagory_id='$cat_id'");
+                    $row = $catinfo->fetch_array();
+                    ?>
+                    <header class="card-header">
+                        Update Catagory
+                    </header>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label semibold" for="exampleInput">Catagory Name</label>
+                                    <input type="text" name="update_catagory" value="<?php echo $row['catagory']; ?>"  class="form-control" id="exampleInput" placeholder="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label semibold" for="exampleInput">Payment</label>
+                                    <input type="number" step="any" name="update_payment"  value="<?php echo $row['payment']; ?>" class="form-control" id="exampleInput" placeholder="">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="submit" name="update" class="btn btn-rounded btn-inline" value="Submit" style="margin-left:10px"/>
+                        </div>
+                    </div>
+                    <?php  }else{?>
+                    <header class="card-header">
+                        Add New Catagory
+                    </header>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label semibold" for="exampleInput">Catagory Name</label>
+                                    <input type="text" name="catagory"  class="form-control" id="exampleInput" placeholder="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label semibold" for="exampleInput">Payment</label>
+                                    <input type="number" step="any" name="payment"  class="form-control" id="exampleInput" placeholder="">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="submit" name="submit" class="btn btn-rounded btn-inline" value="Submit" style="margin-left:10px"/>
+                        </div>
+                    </div>
+
+                    <?php  } ?>
+
+
+
 				</section>
 			</form>	
 				<section class="card card-blue-fill">

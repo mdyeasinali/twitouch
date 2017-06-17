@@ -51,8 +51,8 @@
 	                <span class="lbl">Account</span>
 	            </span>
 	            <ul>
-	                <li><a href="#"><span class="lbl">View Profile</span></a></li>
-	                <li><a href="#"><span class="lbl">Change password</span></a></li>
+	                <li><a href="profile_settings.php"><span class="lbl">Account Settings</span></a></li>
+	                <li><a href="change_password.php"><span class="lbl">Change password</span></a></li>
 	            </ul>
 	        </li>
 	    </ul>

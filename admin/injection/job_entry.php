@@ -5,12 +5,11 @@
 		$question = $_POST['question'];
 		$answer = $_POST['answer'];
 		
-		$pay2 = mysqli_query($con,"SELECT * FROM job_catagory WHERE catagory='$catagory'");
-		$pay = mysqli_num_rows($pay2);
-		$pay = mysqli_fetch_assoc($pay2);
-		$payment = $pay[payment];
+		$pay2 = $con->query("SELECT * FROM job_catagory WHERE catagory='$catagory'");
+		$pay = $pay2->fetch_assoc();
+		$payment = $pay['payment'];
 		
-		$add3 = mysqli_query($con,"INSERT INTO job(catagory,question,answer,payment)VALUES('$catagory','$question','$answer','$payment')");
+		$add3 = $con->query("INSERT INTO job(catagory,question,answer,payment)VALUES('$catagory','$question','$answer','$payment')");
 			if(!$add3)
 			{
 				echo "<script>alert('Database Error')</script>";

@@ -11,13 +11,14 @@ if (isset($_POST['login'])) {
     }
     if ($t2 == 1) {
         if ($status == "Inactive") {
-            echo "<script>alert('Username or Password doesn`t match)</script>";
+            echo "<script>alert('Your Account Inactive')</script>";
             //echo "<script>window.location.href='wait.html'</script>";
         } else {
             $_SESSION['username'] = $t['username'];
+            $_SESSION['id'] = $t['id'];
             $_SESSION['name'] = $t['name'];
+            $_SESSION['email'] = $t['email'];
             $role = $t['role'];
-
             if ($role == "user") {
                 echo "<script>window.location.href='build/home.php'</script>";
             } else {
@@ -25,7 +26,7 @@ if (isset($_POST['login'])) {
             }
         }
     } else {
-        echo "<script>alert('Username or Password doesn`t match)</script>";
+        echo "<script>alert('Username or Password doesn`t match')</script>";
 
     }
 

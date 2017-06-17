@@ -1,5 +1,5 @@
 <?php
-	include "../db.php";
+require_once ('../db.php');
 	if(isset($_GET['catagory_id']))
 	{
 		$catagory_id = $_GET['catagory_id'];

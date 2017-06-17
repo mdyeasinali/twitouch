@@ -1,10 +1,14 @@
 <?php
 session_start();
 require_once ('db.php"');
-if($_SESSION['name'])
-{
+if($_SESSION['name']){
 	$user2 = $_SESSION['name'];
 	$user = $_SESSION['username'];
+    $userid = $_SESSION['id'];
+    $me = $con->query("SELECT * FROM member WHERE username='$user'");
+    $me2 = $me->fetch_assoc();
+    $mem_id = $me2['member_id'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,9 +43,8 @@ if($_SESSION['name'])
 <?php require_once "inc/header.php" ;?>
 
 	<div class="mobile-menu-left-overlay"></div>
-	<?php require_once "inc/sidebar.php" ;?>
+	<?php require_once "inc/sidebar.php";?>
 	<!--.side-menu-->
-
 	<div class="page-content">
 	    <div class="container-fluid">
 	        <div class="row">
@@ -52,7 +55,7 @@ if($_SESSION['name'])
 	                        <article class="statistic-box red">
 	                            <div>
 	                                <div class="number">
-										1500
+                                        <?php include "inc/dashboard/member_count.php";?>
 									</div>
 	                                <div class="caption"><div>Total Member</div></div>
 	                                <div class="percent">
@@ -65,7 +68,7 @@ if($_SESSION['name'])
 	                        <article class="statistic-box purple">
 	                            <div>
 	                                <div class="number">
-										1480
+                                        <?php include "inc/dashboard/Activemember_count.php";?>
 									</div>
 	                                <div class="caption"><div>Active Member</div></div>
 	                                <div class="percent">
@@ -78,7 +81,8 @@ if($_SESSION['name'])
 	                        <article class="statistic-box yellow">
 	                            <div>
 	                                <div class="number">
-										10
+                                        <?php include "inc/dashboard/Todaymember_count.php";?>
+
 									</div>
 	                                <div class="caption"><div>Today Member</div></div>
 	                                
@@ -88,12 +92,26 @@ if($_SESSION['name'])
 	                    <div class="col-sm-4">
 	                        <article class="statistic-box green">
 	                            <div>
-	                                <div class="number">$115.00</div>
+	                                <div class="number"><?php include "inc/dashboard/today_withdraw.php";?></div>
 	                                <div class="caption"><div>Total Withdrawal</div></div>
 	                            </div>
 	                        </article>
 	                    </div>
 						<!--.col-->
+
+                        <div class="col-sm-4">
+                            <article class="statistic-box purple">
+                                <div>
+                                    <div class="number">
+                                        <?php include "inc/dashboard/account_balance.php";?>
+                                    </div>
+                                    <div class="caption"><div>Account Balance</div></div>
+                                    <div class="percent">
+
+                                    </div>
+                                </div>
+                            </article>
+                        </div><!--.col-->
 	                </div><!--.row-->
 	            </div><!--.col-->
 	        </div><!--.row-->

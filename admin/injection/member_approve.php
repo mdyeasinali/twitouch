@@ -1,10 +1,10 @@
 <?php
-include "../db.php";
+require_once ('../db.php');
 if(isset($_GET['member_id']))
 {
     $member_id = $_GET['member_id'];
     $sql = $con->query("SELECT * FROM member WHERE member_id='$member_id'");
-    foreach($sql as $sql2)
+    $sql2 = $sql->fetch_assoc();
         $username = $sql2['username'];
    // $date = date("Y/m/d");
     $status = "Active";

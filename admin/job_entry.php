@@ -73,7 +73,7 @@ if ($_SESSION['name']) {
                                             foreach ($select as $s) {
                                                 ?>
 
-                                                <option><?php echo $s['catagory'];  ?></option>
+                                                <option><?php echo $cat = $s['catagory'];  ?></option>
                                             <?php }
                                         } ?>
                                     </select>
@@ -81,7 +81,14 @@ if ($_SESSION['name']) {
                             </div>
                         </div>
 
-                        <?php   if ( 0 ) {  ?>
+                        <?php
+                        if(isset($_POST['submit'])){
+                            $selected_val = $_POST['catagory'];  // Storing Selected Value In Variable
+                           // Displaying Selected Value
+                        }
+
+
+                        if ( '0'=='0' ) {   echo "You have selected :" .$cat;  ?>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <section class="box-typical box-typical-padding">
@@ -93,7 +100,7 @@ if ($_SESSION['name']) {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-8">
+                                <div class="col-lg-12">
                                     <fieldset class="form-group">
                                         <label class="form-label semibold" for="exampleInput">Answer</label>
                                         <textarea type="text" name="answer" class="form-control" id="exampleInput"

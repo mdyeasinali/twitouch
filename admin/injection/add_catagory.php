@@ -17,4 +17,22 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+if (isset($_POST['update'])) {
+    $catagory = $_POST['update_catagory'];
+    $payment = $_POST['update_payment'];
+    $status = "Active";
+    $cat_id = $_REQUEST['cat_id'];
+
+    $query = $con->query("UPDATE `job_catagory` SET catagory = '$catagory' ,payment = '$payment' ,status = '$status' WHERE catagory_id = '$cat_id'");
+    if ($query) {
+        echo "<script>alert('Sucess!!!')</script>";
+        echo "<script>window.location.href='job_catagory.php'</script>";
+    } else {
+        echo "<script>alert('error!!!')</script>";
+        echo "<script>window.location.href='job_catagory.php'</script>";
+    }
+}
+
+
 ?>
