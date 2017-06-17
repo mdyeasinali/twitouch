@@ -4,6 +4,9 @@ require_once ('db.php"');
 if($_SESSION['name'])
 {
 	$user = $_SESSION['name'];
+    $fetch2 = $con->query("SELECT * FROM member WHERE username='$user'");
+    $fetch = $fetch2->fetch_assoc();
+    $member_id = $fetch['member_id'];
 ?>
 <!DOCTYPE html>
 <html>
