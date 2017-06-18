@@ -41,28 +41,25 @@ if (isset($_REQUEST['member_id'])) {
     </head>
     <body class="with-side-menu control-panel control-panel-compact">
 
-    <?php require_once "inc/header.php"; ?>
+    <?php require_once "inc/header.php" ;?>
 
     <div class="mobile-menu-left-overlay"></div>
-    <?php require_once "inc/sidebar.php"; ?>
+    <?php require_once "inc/sidebar.php" ;?>
     <!--.side-menu-->
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
-                <h5>Welcome <?php echo $user2; ?></h5>
-
+                <h5>Welcome <?php echo $user2;?></h5>
+                <h5>Member ID: <?php echo $mem_id;?></h5>
                 <div class="col-xl-12">
                     <div class="row">
-                        <?php include "../build/inc/update.php"; ?>
                         <div class="col-sm-4">
                             <article class="statistic-box red">
                                 <div>
                                     <div class="number">
                                         $15.00
                                     </div>
-                                    <div class="caption">
-                                        <div>Security Amount</div>
-                                    </div>
+                                    <div class="caption"><div>Security Amount</div></div>
                                     <div class="percent">
 
                                     </div>
@@ -73,11 +70,9 @@ if (isset($_REQUEST['member_id'])) {
                             <article class="statistic-box purple">
                                 <div>
                                     <div class="number">
-                                        <?php include "inc/dashboard/today_ref_earn.php"; ?>
+                                        <?php include "inc/dashboard/today_ref_earn.php";?>
                                     </div>
-                                    <div class="caption">
-                                        <div>Today Ref Earn</div>
-                                    </div>
+                                    <div class="caption"><div>Today Ref Earn</div></div>
                                     <div class="percent">
 
                                     </div>
@@ -88,11 +83,9 @@ if (isset($_REQUEST['member_id'])) {
                             <article class="statistic-box yellow">
                                 <div>
                                     <div class="number">
-                                        <?php include "inc/dashboard/today_job_earn.php"; ?>
+                                        <?php include "inc/dashboard/today_job_earn.php";?>
                                     </div>
-                                    <div class="caption">
-                                        <div>Today Job Earn</div>
-                                    </div>
+                                    <div class="caption"><div>Today Job Earn</div></div>
 
                                 </div>
                             </article>
@@ -100,20 +93,16 @@ if (isset($_REQUEST['member_id'])) {
                         <div class="col-sm-4">
                             <article class="statistic-box green">
                                 <div>
-                                    <div class="number">$5.00</div>
-                                    <div class="caption">
-                                        <div>Today Withdrawal</div>
-                                    </div>
+                                    <div class="number"><?php include "inc/dashboard/today_withdraw.php";?></div>
+                                    <div class="caption"><div>Today Withdrawal</div></div>
                                 </div>
                             </article>
                         </div>
                         <div class="col-sm-4">
                             <article class="statistic-box red">
                                 <div>
-                                    <div class="number">$5.00</div>
-                                    <div class="caption">
-                                        <div>Today Transfer</div>
-                                    </div>
+                                    <div class="number"><?php include "inc/dashboard/today_transfer.php";?></div>
+                                    <div class="caption"><div>Today Transfer</div></div>
                                 </div>
                             </article>
                         </div>
@@ -121,11 +110,9 @@ if (isset($_REQUEST['member_id'])) {
                             <article class="statistic-box purple">
                                 <div>
                                     <div class="number">
-                                        <?php include "inc/dashboard/account_balance.php"; ?>
+                                        <?php include "inc/dashboard/account_balance.php";?>
                                     </div>
-                                    <div class="caption">
-                                        <div>Account Balance</div>
-                                    </div>
+                                    <div class="caption"><div>Account Balance</div></div>
                                 </div>
                             </article>
                         </div>
@@ -133,10 +120,9 @@ if (isset($_REQUEST['member_id'])) {
                     </div><!--.row-->
                 </div><!--.col-->
             </div><!--.row-->
-
-
         </div><!--.container-fluid-->
     </div><!--.page-content-->
+
 
 
     <script src="js/lib/jquery/jquery.min.js"></script>
@@ -149,16 +135,16 @@ if (isset($_REQUEST['member_id'])) {
     <script type="text/javascript" src="js/lib/match-height/jquery.matchHeight.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             $('.panel').lobiPanel({
                 sortable: true
             });
-            $('.panel').on('dragged.lobiPanel', function (ev, lobiPanel) {
+            $('.panel').on('dragged.lobiPanel', function(ev, lobiPanel){
                 $('.dahsboard-column').matchHeight();
             });
 
-            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.load('current', {'packages':['corechart']});
             google.charts.setOnLoadCallback(drawChart);
             function drawChart() {
                 var dataTable = new google.visualization.DataTable();
@@ -167,15 +153,15 @@ if (isset($_REQUEST['member_id'])) {
                 // A column for custom tooltip content
                 dataTable.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
                 dataTable.addRows([
-                    ['MON', 130, ' '],
-                    ['TUE', 130, '130'],
-                    ['WED', 180, '180'],
-                    ['THU', 175, '175'],
-                    ['FRI', 200, '200'],
-                    ['SAT', 170, '170'],
-                    ['SUN', 250, '250'],
-                    ['MON', 220, '220'],
-                    ['TUE', 220, ' ']
+                    ['MON',  130, ' '],
+                    ['TUE',  130, '130'],
+                    ['WED',  180, '180'],
+                    ['THU',  175, '175'],
+                    ['FRI',  200, '200'],
+                    ['SAT',  170, '170'],
+                    ['SUN',  250, '250'],
+                    ['MON',  220, '220'],
+                    ['TUE',  220, ' ']
                 ]);
 
                 var options = {
@@ -205,7 +191,7 @@ if (isset($_REQUEST['member_id'])) {
                             italic: false
                         },
                         baselineColor: '#16b4fc',
-                        ticks: [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350],
+                        ticks: [0,25,50,75,100,125,150,175,200,225,250,275,300,325,350],
                         gridlines: {
                             color: '#1ba0fc',
                             count: 15
@@ -221,11 +207,11 @@ if (isset($_REQUEST['member_id'])) {
                         fill: '#008ffb',
                         strokeWidth: 0,
                     },
-                    chartArea: {
-                        left: 0,
-                        top: 0,
-                        width: '100%',
-                        height: '100%'
+                    chartArea:{
+                        left:0,
+                        top:0,
+                        width:'100%',
+                        height:'100%'
                     },
                     fontSize: 11,
                     fontName: 'Proxima Nova',
@@ -238,10 +224,9 @@ if (isset($_REQUEST['member_id'])) {
                 var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
                 chart.draw(dataTable, options);
             }
-
-            $(window).resize(function () {
+            $(window).resize(function(){
                 drawChart();
-                setTimeout(function () {
+                setTimeout(function(){
                 }, 1000);
             });
         });
@@ -250,7 +235,9 @@ if (isset($_REQUEST['member_id'])) {
     </body>
     </html>
     <?php
-} else {
+}
+else
+{
     header("location: ../auth.php");
 }
 ?>
