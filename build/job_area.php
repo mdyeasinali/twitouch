@@ -40,10 +40,11 @@ if(isset($_GET['job_id']))
 			<section class="card">
 				<div class="card-block">
 					<?php
-						$query2 = mysqli_query($con,"SELECT * FROM job WHERE job_id='$job_id'");
-						$query = mysqli_num_rows($query2);
-						$query = mysqli_fetch_assoc($query2);
-						$catagory = $query[catagory];
+						$query2 = $con->query("SELECT * FROM job WHERE job_id='$job_id'");
+						$query = $query2->fetch_assoc();
+						$catagory = $query['catagory'];
+						$qjob_id = $query['job_id'];
+
 						if($catagory == "Data Entry")
 						{
 					?>
@@ -54,7 +55,7 @@ if(isset($_GET['job_id']))
 							<div class="col-md-10">
 									<fieldset class="form-group">
 										<label class="form-label">Question</label>
-										<p><?php echo $query[question];?></p>
+										<p><?php echo $query['question'];?></p>
 									</fieldset>
 									<fieldset class="form-group">
 										<label class="form-label">Answer</label>
@@ -72,14 +73,14 @@ if(isset($_GET['job_id']))
 						{
 					?>
 						<h3>
-						<a target="_blank" href="<?php echo "injection/click.php?job_id=$query[job_id]&member_id=$member_id" ;?>" onclick="location.href='jobs.php';">Click Here</a> To Watch the video
+						<a target="_blank" href="<?php echo "injection/click.php?job_id=$qjob_id&member_id=$member_id" ;?>" onclick="location.href='jobs.php';">Click Here</a> To Watch the video
 						</h3>
 					<?php
 						}
 						else if($catagory == "Facebook")
 						{
 					?>
-						<h3><a target="_blank" href="<?php echo "injection/click.php?job_id=$query[job_id]&member_id=$member_id" ;?>" onclick="location.href='jobs.php';">Click Here</a> To Like the Facebook Page/Post</h3>
+						<h3><a target="_blank" href="<?php echo "injection/click.php?job_id=$qjob_id&member_id=$member_id" ;?>" onclick="location.href='jobs.php';">Click Here</a> To Like the Facebook Page/Post</h3>
 					<?php
 						}
 						else

@@ -16,7 +16,7 @@ if ($query) {
             <?php }else{?>
                 <td><a href="<?php echo "injection/member_unblock.php?member_id=$Mid" ;?>" class="btn btn-inline">Unblock</a></td>
             <?php }?>
-            <td><a href="#" class="btn btn-inline">Member Panel</a></td>
+            <td><a href="member_panel.php?member_id=<?php echo $Mid ?>" class="btn btn-inline">Member Panel</a></td>
         </tr>
         <?php
     }

@@ -3,12 +3,12 @@ session_start();
 require_once('../admin/db.php');
 if($_SESSION['name'])
 {
-	$user2 = $_SESSION['name'];
-	$user = $_SESSION['username'];
-	$me = $con->query("SELECT * FROM member WHERE `username` = '$user' ");
-	foreach ($me as $minfo)
-	$mem_id = $minfo['member_id']
-?>
+    $user2 = $_SESSION['name'];
+    $user = $_SESSION['username'];
+    $me = $con->query("SELECT * FROM member WHERE `username` = '$user' ");
+    foreach ($me as $minfo)
+             $mem_id = $minfo['member_id']
+    ?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -48,10 +48,9 @@ if($_SESSION['name'])
 	    <div class="container-fluid">
 	        <div class="row">
 				<h5>Welcome <?php echo $user2;?></h5>
-				
+				<h5>Member ID: <?php echo $mem_id;?></h5>
 	            <div class="col-xl-12">
 	                <div class="row">
-						<?php include "inc/update.php";?>
 	                    <div class="col-sm-4">
 	                        <article class="statistic-box red">
 	                            <div>
@@ -92,7 +91,7 @@ if($_SESSION['name'])
 	                    <div class="col-sm-4">
 	                        <article class="statistic-box green">
 	                            <div>
-	                                <div class="number">$5.00</div>
+	                                <div class="number"><?php include "inc/dashboard/today_withdraw.php";?></div>
 	                                <div class="caption"><div>Today Withdrawal</div></div>
 	                            </div>
 	                        </article>
@@ -100,7 +99,7 @@ if($_SESSION['name'])
 						<div class="col-sm-4">
 	                        <article class="statistic-box red">
 	                            <div>
-	                                <div class="number">$5.00</div>
+	                                <div class="number"><?php include "inc/dashboard/today_transfer.php";?></div>
 	                                <div class="caption"><div>Today Transfer</div></div>
 	                            </div>
 	                        </article>
@@ -119,8 +118,6 @@ if($_SESSION['name'])
 	                </div><!--.row-->
 	            </div><!--.col-->
 	        </div><!--.row-->
-
-
 	    </div><!--.container-fluid-->
 	</div><!--.page-content-->
 

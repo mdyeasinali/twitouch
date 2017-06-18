@@ -7,11 +7,19 @@
 		$amount = $_POST['amount'];
 		$message = $_POST['message'];
 		$date = date("Y/m/d");
+		$status = "pending";
 		
 		$collect2 = $con->query("SELECT * FROM member_balance WHERE member_id='$member_id'");
-
-		foreach ($collect2 as $collect)
+        $collect = $collect2->fetch_assoc();
 		$current = $collect['balance'];
+		
+		$rcv = $con->query("SELECT * FROM member_balance WHERE member_id='$reciever_id'");
+
+        $balda = $rcv->num_rows;
+		$rcv2 = $rcv->fetch_assoc();
+		$rcv_old = $rcv2['balance'];
+		
+		
 		
 		$match2 = $con->query("SELECT * FROM users WHERE username='$username' AND password='$password'");
 		$match = $match2->num_rows;
@@ -20,10 +28,18 @@
 			if($current > $amount)
 			{
 				$new = $current - $amount;
-				$update1 = $con->query("INSERT INTO transfer_history(member_id,reciever_id,amount,message,transfer_date)VALUES('$member_id','$reciever_id','$amount','$message','$date')") or die(mysqli_error());
+				$rcv_new = $rcv_old + $amount;
+				$update1 = $con->query("INSERT INTO transfer_history(member_id,reciever_id,amount,message,transfer_date,status)VALUES('$member_id','$reciever_id','$amount','$message','$date','$status')") or die(mysqli_error());
 				$update2 = $con->query("UPDATE member_balance SET balance='$new' WHERE member_id='$member_id'") or die(mysqli_error());
-				
-				if(!$update1 or !$update2)
+				if($balda > 0)
+				{
+					$update3 = $con->query("UPDATE member_balance SET balance='$rcv_new' WHERE member_id='$reciever_id'") or die(mysqli_error());
+				}
+				else
+				{
+					$update3 = $con->query("INSERT INTO member_balance(member_id,balance)VALUES('$reciever_id','$rcv_new')") or die(mysqli_error());
+				}
+				if(!$update1 or !$update2 or !$update3)
 				{
 					echo "<script>alert('Error!!!!')</script>";
 				}

@@ -14,8 +14,8 @@
 	                <span class="lbl">Member</span>
 	            </span>
 	            <ul>
-	                <li><a href="new_member.php"><span class="lbl">New Member</span></a></li>
-	                <li><a href="#"><span class="lbl">Member Tree</span></a></li>
+	                <li><a href="member_request.php"><span class="lbl">New Member</span></a></li>
+	                <li><a href="member_tree.php"><span class="lbl">Member Tree</span></a></li>
 	            </ul>
 	        </li>
 			<li class="green with-sub">
@@ -27,8 +27,8 @@
 	                <li><a href="transfer.php"><span class="lbl">Transfer</span></a></li>
 	                <li><a href="withdraw.php"><span class="lbl">Withdraw</span></a></li>
 	                <li><a href="ref_earn_history.php"><span class="lbl">Ref Earn History</span></a></li>
-	                <li><a href="#"><span class="lbl">Transfer History</span></a></li>
-	                <li><a href="#"><span class="lbl">Withdraw History</span></a></li>
+	                <li><a href="transfer_history.php"><span class="lbl">Transfer History</span></a></li>
+	                <li><a href="withdraw_history.php"><span class="lbl">Withdraw History</span></a></li>
 	            </ul>
 	        </li>
 			<li class="yellow with-sub">
@@ -48,8 +48,8 @@
 	            </span>
 	            <ul>
 	                <li><a href="account_inactive.php"><span class="lbl">Account Inactive</span></a></li>
-	                <li><a href="#"><span class="lbl">View Profile</span></a></li>
-	                <li><a href="#"><span class="lbl">Change password</span></a></li>
+	                <li><a href="view_profile.php"><span class="lbl">View Profile</span></a></li>
+	                <li><a href="change_password.php"><span class="lbl">Change password</span></a></li>
 	            </ul>
 	        </li>
 	    </ul>

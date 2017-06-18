@@ -1,7 +1,7 @@
 <?php
 $today = date("Y/m/d");
-$result2 = $con->query("SELECT SUM(amount) AS total FROM member_jobs WHERE job_date='$today' AND ref_id='$mem_id'");
-foreach ($result2 as $row2)
-    $sum2 = sprintf("%.2f", $row2['total']);
+$result2 = $con->query("SELECT amount AS total FROM ref_earn WHERE earn_date='$today' AND member_id='$mem_id'");
+$row2 = $result2->fetch_array();
+$sum2 = sprintf("%.3f", $row2['total']);
 echo "$" . $sum2;
 ?>

@@ -1,13 +1,17 @@
-
+<?php
+	$earn = $con->query("SELECT * FROM ref_earn WHERE member_id='$member_id'");
+	if($earn)
+	{
+		foreach ($earn as $earn2)
+		{
+?>
 	<tr>
-		<td>01</td>
-		<td>10/05/17</td>
-		<td>100041</td>
-		<td>$1.25</td>
+		<td><?php echo $earn2[earn_date];?></td>
+		<td><?php echo $earn2[amount];?></td>
+		
 	</tr>
-	<tr>
-		<td>02</td>
-		<td>11/05/17</td>
-		<td>100041</td>
-		<td>$1.25</td>
-	</tr>
+<?php
+				
+		}
+	}
+?>

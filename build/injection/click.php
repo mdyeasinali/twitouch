@@ -1,6 +1,6 @@
 <?php
-	
-	include "../db.php";
+
+include_once ("../../admin/db.php");
 	
 	if(isset($_GET['job_id']))
 	{
