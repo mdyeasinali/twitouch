@@ -18,7 +18,8 @@
 	                <li><a href="member_inactive_request.php"><span class="lbl">Member Inactive Request</span></a></li>
 	                <li><a href="reactive_member.php"><span class="lbl">Member Reactive</span></a></li>
 	                <li><a href="member_monthly_commission.php"><span class="lbl">Member Monthly Commission</span></a></li>
-	                <li><a href="member_list.php"><span class="lbl">Member List</span></a></li>
+	                <li><a href="member_list.php"><span class="lbl">Member List</span></a></li>					
+	                <li><a href="joining_report.php"><span class="lbl">Joining Report</span></a></li>
 	            </ul>
 	        </li>
 			<li class="green with-sub">

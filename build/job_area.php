@@ -5,6 +5,9 @@ if(isset($_GET['job_id']))
 {
 	$job_id = $_GET['job_id'];
 	$member_id = $_GET['member_id'];
+	$find_out = $con->query("SELECT * FROM member WHERE member_id='$member_id'");
+	$find_out2 = $find_out->fetch_assoc();
+	$my_ref_id = $find_out2['ref_id'];
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +46,6 @@ if(isset($_GET['job_id']))
 						$query2 = $con->query("SELECT * FROM job WHERE job_id='$job_id'");
 						$query = $query2->fetch_assoc();
 						$catagory = $query['catagory'];
-						$qjob_id = $query['job_id'];
-
 						if($catagory == "Data Entry")
 						{
 					?>
@@ -55,7 +56,7 @@ if(isset($_GET['job_id']))
 							<div class="col-md-10">
 									<fieldset class="form-group">
 										<label class="form-label">Question</label>
-										<p><?php echo $query['question'];?></p>
+										<p><?php echo $query[question];?></p>
 									</fieldset>
 									<fieldset class="form-group">
 										<label class="form-label">Answer</label>
@@ -73,14 +74,14 @@ if(isset($_GET['job_id']))
 						{
 					?>
 						<h3>
-						<a target="_blank" href="<?php echo "injection/click.php?job_id=$qjob_id&member_id=$member_id" ;?>" onclick="location.href='jobs.php';">Click Here</a> To Watch the video
+						<a target="_blank" href="<?php echo "injection/click.php?job_id=$query[job_id]&member_id=$member_id" ;?>" onclick="location.href='jobs_red.php';">Click Here</a> To Watch the video
 						</h3>
 					<?php
 						}
 						else if($catagory == "Facebook")
 						{
 					?>
-						<h3><a target="_blank" href="<?php echo "injection/click.php?job_id=$qjob_id&member_id=$member_id" ;?>" onclick="location.href='jobs.php';">Click Here</a> To Like the Facebook Page/Post</h3>
+						<h3><a target="_blank" href="<?php echo "injection/click.php?job_id=$query[job_id]&member_id=$member_id" ;?>" onclick="location.href='jobs_red.php';">Click Here</a> To Like the Facebook Page/Post</h3>
 					<?php
 						}
 						else

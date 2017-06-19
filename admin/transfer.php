@@ -1,13 +1,13 @@
 <?php
-session_start();
-require_once ('db.php"');
-if($_SESSION['name'])
-{
-	$user = $_SESSION['name'];
-    $fetch2 = $con->query("SELECT * FROM member WHERE username='$user'");
-    $fetch = $fetch2->fetch_assoc();
-    $member_id = $fetch['member_id'];
-?>
+    session_start();
+    include_once ("db.php");
+    if($_SESSION['username'])
+    {
+        $user = $_SESSION['username'];
+        $fetch2 = $con->query("SELECT * FROM member WHERE `username` ='$user'");
+        $fetch = $fetch2->fetch_assoc();
+            $member_id = $fetch['member_id'];
+        ?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -39,41 +39,40 @@ if($_SESSION['name'])
 <div class="page-content">
 		<div class="container-fluid">
 			<form method="POST">
-
+				<?php include "inc/transfer.php";?>
 			<section class="card">
 				<div class="card-block">
 					<div class="tbl-cell">
-						<h3>Transfer Information</h3>
+						<h3>Transfer Information<h3>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-				<form id="form-signin_v1" name="form-signin_v1" method="POST">
 								<fieldset class="form-group">
 									<label class="form-label">User ID</label>
-									<input type="text" name="company_name" class="form-control" id="inputPassword" placeholder="">
+									<input type="text" name="username" class="form-control" id="inputPassword" placeholder="">
 								</fieldset>
 								<fieldset class="form-group">
 									<label class="form-label">Password</label>
-									<input type="password" name="company_address" class="form-control" id="inputPassword"></input>
+									<input type="password" name="password" class="form-control" id="inputPassword" placeholder="">
 								</fieldset>
 								<fieldset class="form-group">
 									<label class="form-label">Reciever ID</label>
-									<input type="text" name="pick_point" class="form-control" id="inputPassword" placeholder="">
+									<input type="text" name="reciever_id" class="form-control" id="inputPassword" placeholder="">
 								</fieldset>
 								<fieldset class="form-group">
 									<label class="form-label">Amount</label>
-									<input type="text" name="web_link" class="form-control" id="inputPassword" placeholder="">
+									<input type="text" name="amount" class="form-control" id="inputPassword" placeholder="">
 								</fieldset>
 								<fieldset class="form-group">
 									<label class="form-label">Message</label>
-									<input type="text" name="fb_link" class="form-control" id="inputPassword" placeholder="">
+									<input type="text" name="message" class="form-control" id="inputPassword" placeholder="">
 								</fieldset>
 						</div>
 					</div>
 						<div class="col-lg-4">
-							<button type="submit" name="update" class="btn btn-rounded btn-success sign-up">Submit</button>
+							<input type="submit" name="submit" class="btn btn-rounded" value="Submit" />
 						</div>
-					</div>
+				</div>
 			</section>
 			</form>
 		</div><!--.container-fluid-->
@@ -137,6 +136,7 @@ if($_SESSION['name'])
 }
 else
 {
-header("location: login.php");
+	session_destroy();
+header("location: ../auth.php");
 }
 ?>

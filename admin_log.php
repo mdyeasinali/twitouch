@@ -26,7 +26,9 @@ if (isset($_POST['login'])) {
             }
         }
     } else {
+        $_SESSION['admin_access'];
         echo "<script>alert('Username or Password doesn`t match')</script>";
+        header("location: auth.php");
 
     }
 

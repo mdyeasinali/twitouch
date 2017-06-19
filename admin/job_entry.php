@@ -65,15 +65,16 @@ if ($_SESSION['name']) {
                             <div class="col-lg-4">
                                 <fieldset class="form-group">
                                     <label class="form-label semibold" for="exampleInput">Catagory Name</label>
-                                    <select id="exampleSelect" class="form-control" name="catagory">
-
+                                    <select id="categorySelect" class="form-control category-select" name="catagory">
+                                        <option> Please select Category</option>
                                         <?php
                                         $select = $con->query("SELECT * FROM job_catagory WHERE status='Active'");
+
                                         if ($select) {
                                             foreach ($select as $s) {
                                                 ?>
 
-                                                <option><?php echo $cat = $s['catagory'];  ?></option>
+                                                <option value="<?=$s['catagory'];?>"><?php echo $cat = $s['catagory'];  ?></option>
                                             <?php }
                                         } ?>
                                     </select>
@@ -81,14 +82,8 @@ if ($_SESSION['name']) {
                             </div>
                         </div>
 
-                        <?php
-                        if(isset($_POST['submit'])){
-                            $selected_val = $_POST['catagory'];  // Storing Selected Value In Variable
-                           // Displaying Selected Value
-                        }
 
-
-                        if ( '0'=='0' ) {   echo "You have selected :" .$cat;  ?>
+                        <div class="data-entry">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <section class="box-typical box-typical-padding">
@@ -103,25 +98,39 @@ if ($_SESSION['name']) {
                                 <div class="col-lg-12">
                                     <fieldset class="form-group">
                                         <label class="form-label semibold" for="exampleInput">Answer</label>
-                                        <textarea type="text" name="answer" class="form-control" id="exampleInput"
+                                        <textarea type="text" name="d_answer" class="form-control" id="exampleInput"
                                                   rows="3"></textarea>
                                     </fieldset>
                                 </div>
                             </div>
 
+                        </div>
+                        <div class="url-link">
 
-                        <?php } else { ?>
                             <div class="row">
                                 <div class="col-lg-8">
                                     <fieldset class="form-group">
-                                        <label class="form-label semibold" for="exampleInput">Link</label>
-                                        <textarea type="text" name="answer" class="form-control" id="exampleInput"
-                                                  rows="3"></textarea>
+                                        <label class="form-label semibold link" for="exampleInput">Link</label>
+
+                                        <textarea type="text" name="u_answer" class="form-control" id="exampleInput" rows="3"></textarea>
                                     </fieldset>
                                 </div>
                             </div>
+                        </div>
 
-                        <?php } ?>
+                        <div class="captcha">
+
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <fieldset class="form-group">
+                                        <label class="form-label semibold Captcha" for="exampleInput">Captcha</label>
+
+                                        <input type="text" name="c_answer" class="form-control" id="exampleInput" maxlength="7">
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="row">
                             <input type="submit" name="submit" class="btn btn-rounded btn-inline" value="Submit"
@@ -252,7 +261,27 @@ if ($_SESSION['name']) {
     <script>
         $(document).ready(function () {
             $('.summernote').summernote();
+
+            $("#categorySelect").change(function() {
+                if ($("#categorySelect").val() == "Data Entry") {
+                    $(".data-entry").css("display", "block");
+                    $(".url-link").css("display", "none");
+                    $(".captcha").css("display", "none");
+                } else if ($("#categorySelect").val() == "Facebook" || $("#categorySelect").val() == "Youtube") {
+                    $(".captcha").css("display", "none");
+                    $(".data-entry").css("display", "none");
+                    $(".url-link").css("display", "block");
+                } else if ($("#categorySelect").val() == "Captcha" ){
+                    $(".captcha").css("display", "block");
+                    $(".data-entry").css("display", "none");
+                    $(".url-link").css("display", "none");
+                }else {
+                    $(".url-link, .data-entry, .captcha").css("display", "none");
+                }
+            }).trigger("change");
         });
+
+
     </script>
     </body>
     </html>

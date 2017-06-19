@@ -48,47 +48,54 @@
 							-->
 							
 								<div class="row">
-									<div class="col-lg-6 col-xs-12">
-										<form class="form-register" method="POST">
-										<?php include "register_help.php";?>
-											<h3>Sign Up</h3>
-											
-											<div class="form-field">
-												<label for="name-register">Name</label>
-												<input type="text" name="name" id="name-register" required>
-											</div>
-											
-											<div class="form-field">
-												<label for="username-register">Username</label>
-												<input type="text" name="username" id="username-register" required>
-											</div>
+                                    <div class="col-lg-6 col-xs-12">
+                                        <form class="form-register" method="POST">
+                                            <?php include "register_help.php";?>
+                                            <h3>Sign Up</h3>
 
-											<div class="form-field">
-												<label for="password-register">Password</label>
-												<input type="password" name="password" id="password-register" pattern=".{16,}" required title="16 characters minimum">
-											</div>
-											
-											<div class="form-field">
-												<label for="reap_password-register">Repeat Password</label>
-												<input type="password" name="password2" id="reap_password-register" pattern=".{16,}" required title="16 characters minimum">
-											</div>
-											
-											<div class="form-field">
-												<label for="email-register">E-mail</label>
-												<input type="email" name="email" id="email-register" required>
-											</div>
-											
-											<div class="form-field">
-												<label for="ref_id">Reference ID</label>
-												<input type="text" id="ref_id" name="ref_id" required>
-											</div>
-											
-											<div class="form-field">
-												<input type="submit" class="btn" name="register" value="Register">
-											</div>
-										</form>
-									</div>
-								</div>
+                                            <div class="form-field">
+                                                <label for="name-register">Name</label>
+                                                <input type="text" name="name" id="name-register" required>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <label for="username-register">Username</label>
+                                                <input type="text" name="username" id="username-register" required>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <label for="password-register">Password</label>
+                                                <input type="password" name="password" id="password-register" pattern=".{10,}" required title="10 characters minimum">
+                                            </div>
+
+                                            <div class="form-field">
+                                                <label for="reap_password-register">Repeat Password</label>
+                                                <input type="password" name="password2" id="reap_password-register" pattern=".{10,}" required title="10 characters minimum">
+                                            </div>
+
+                                            <div class="form-field">
+                                                <label for="email-register">E-mail</label>
+                                                <input type="email" name="email" id="email-register" required>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="mobile-number">Mobile Number</label>
+                                                <input type="text" name="mobile" id="mobile-number" required>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="address">Address</label>
+                                                <textarea type="text" name="address" id="address" rows="4" required></textarea>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="ref_id">Reference ID</label>
+                                                <input type="text" id="ref_id" name="ref_id" required>
+                                            </div>
+
+                                            <div class="form-field">
+                                                <input type="submit" class="btn" name="register" value="Register">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 					</div>

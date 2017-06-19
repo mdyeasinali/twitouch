@@ -48,7 +48,7 @@ if($_SESSION['username'])
 					<div class="row">
 						<div class="col-md-6">
 								<fieldset class="form-group">
-									<label class="form-label">User ID</label>
+									<label class="form-label">Username</label>
 									<input type="text" name="username" class="form-control" id="inputPassword" placeholder="">
 								</fieldset>
 								<fieldset class="form-group">

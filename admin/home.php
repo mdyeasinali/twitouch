@@ -59,7 +59,7 @@ if($_SESSION['name']){
 									</div>
 	                                <div class="caption"><div>Total Member</div></div>
 	                                <div class="percent">
-	                                 
+
 	                                </div>
 	                            </div>
 	                        </article>
@@ -72,7 +72,7 @@ if($_SESSION['name']){
 									</div>
 	                                <div class="caption"><div>Active Member</div></div>
 	                                <div class="percent">
-	                                    
+
 	                                </div>
 	                            </div>
 	                        </article>
@@ -81,11 +81,11 @@ if($_SESSION['name']){
 	                        <article class="statistic-box yellow">
 	                            <div>
 	                                <div class="number">
-                                        <?php include "inc/dashboard/Todaymember_count.php";?>
+                                        <?php include "inc/dashboard/today_member.php";?>
 
 									</div>
 	                                <div class="caption"><div>Today Member</div></div>
-	                                
+
 	                            </div>
 	                        </article>
 	                    </div><!--.col-->

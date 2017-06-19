@@ -4,12 +4,12 @@ require_once('db.php');
 
 
 if (isset($_REQUEST['member_id'])) {
-    $mem_id = $_REQUEST['member_id'];
+    $member_id = $_REQUEST['member_id'];
+    $mem_id  = $_REQUEST['member_id'];
     $me = $con->query("SELECT * FROM member WHERE `member_id` = '$mem_id' ");
     $row = $me->fetch_array();
     $user2 = $row['name'];
     $user = $row['username'];
-
     ?>
     <!DOCTYPE html>
     <html>
@@ -38,6 +38,16 @@ if (isset($_REQUEST['member_id'])) {
         <link rel="stylesheet" href="css/lib/font-awesome/font-awesome.min.css">
         <link rel="stylesheet" href="css/lib/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
+
+
+
+
+        <link rel="stylesheet" href="css/lib/datatables-net/datatables.min.css">
+        <link rel="stylesheet" href="css/separate/vendor/datatables-net.min.css">
+        <link rel="stylesheet" href="css/separate/vendor/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="css/separate/vendor/bootstrap-daterangepicker.min.css">
+        <link rel="stylesheet" href="css/lib/clockpicker/bootstrap-clockpicker.min.css">
+        <link rel="stylesheet" href="css/separate/vendor/bootstrap-select/bootstrap-select.min.css">
     </head>
     <body class="with-side-menu control-panel control-panel-compact">
 
@@ -121,6 +131,152 @@ if (isset($_REQUEST['member_id'])) {
                 </div><!--.col-->
             </div><!--.row-->
         </div><!--.container-fluid-->
+
+        <div class="container-fluid">
+            <header class="section-header">
+                <div class="tbl">
+                    <div class="tbl-row">
+                        <div class="tbl-cell">
+                            <h2>Reference Earn History</h2>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <form method="POST">
+                <section class="card">
+
+
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class='input-group date'>
+                                        <input id="daterange" type="text" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" class="form-control">
+                                        <span class="input-group-addon">
+										<i class="font-icon font-icon-calend"></i>
+									</span>
+                                    </div>
+
+                                </div>
+                                <input type="submit" name="order" class="btn btn-rounded btn-inline" value="Show"/>
+                            </div>
+                        </div>
+                        <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>Earn Date</th>
+                                <th>Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php include "../build/inc/ref_earn_history.php";?>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </form>
+        </div><!--.container-fluid-->
+
+        <div class="container-fluid">
+            <header class="section-header">
+                <div class="tbl">
+                    <div class="tbl-row">
+                        <div class="tbl-cell">
+                            <h2>Transfer History</h2>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <form method="POST">
+                <section class="card">
+
+
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class='input-group date'>
+                                        <input id="daterange" type="text" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" class="form-control">
+                                        <span class="input-group-addon">
+										<i class="font-icon font-icon-calend"></i>
+									</span>
+                                    </div>
+
+                                </div>
+                                <input type="submit" name="order" class="btn btn-rounded btn-inline" value="Show"/>
+                            </div>
+                        </div>
+                        <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>Reciever ID</th>
+                                <th>Amount</th>
+                                <th>Transfer Date</th>
+                                <th>Message</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php include "../build/inc/transfer_history.php";?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </form>
+        </div><!--.container-fluid-->
+
+
+        <div class="container-fluid">
+        <header class="section-header">
+            <div class="tbl">
+                <div class="tbl-row">
+                    <div class="tbl-cell">
+                        <h2>Withdraw History</h2>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <form method="POST">
+            <section class="card">
+
+
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class='input-group date'>
+                                    <input id="daterange" type="text" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" class="form-control">
+                                    <span class="input-group-addon">
+										<i class="font-icon font-icon-calend"></i>
+									</span>
+                                </div>
+
+                            </div>
+                            <input type="submit" name="order" class="btn btn-rounded btn-inline" value="Show"/>
+                        </div>
+                    </div>
+                    <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Payment Method</th>
+                            <th>Amount</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php include "../build/inc/withdraw_history.php";?>
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </form>
+    </div><!--.container-fluid-->
     </div><!--.page-content-->
 
 

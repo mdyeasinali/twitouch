@@ -1,9 +1,12 @@
 <?php
 session_start();
 include_once ("../admin/db.php");
-if($_SESSION['name'])
+if($_SESSION['username'])
 {
-	$user = $_SESSION['name'];
+	$user = $_SESSION['username'];
+	$fetch2 = $con->query("SELECT * FROM member WHERE username='$user'");
+	$fetch = $fetch2->fetch_assoc();
+	$member_id = $fetch['member_id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,9 +80,7 @@ if($_SESSION['name'])
 					<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
 						<tr>
-							<th>SL</th>
-							<th>Date</th>
-							<th>Ref ID</th>
+							<th>Earn Date</th>
 							<th>Amount</th>
 						</tr>
 						</thead>
